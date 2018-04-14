@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="MemberShipSystem" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="MembershipSystemContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Users" EntityType="MemberShipSystem.User" />
+    <EntitySet Name="Orders" EntityType="MemberShipSystem.Order" />
+    <EntitySet Name="Products" EntityType="MemberShipSystem.Product" />
+  </EntityContainer>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="userID" />
+    </Key>
+    <Property Name="userID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Password" Type="String" Nullable="false" />
+    <Property Name="Email" Type="String" Nullable="false" />
+    <Property Name="SecQuestion" Type="String" Nullable="false" />
+    <Property Name="SecAnswer" Type="String" Nullable="false" />
+    <Property Name="PrevOrder" Type="String" Nullable="false" />
+    <Property Name="UserType" Type="MemberShipSystem.MemeberPrivilege" Nullable="false" />
+  </EntityType>
+  <EnumType Name="MemeberPrivilege">
+    <Member Name="Standard" Value="1" />
+    <Member Name="Silver" Value="2" />
+    <Member Name="Gold" Value="3" />
+  </EnumType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="orderID" />
+    </Key>
+    <Property Name="orderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Prices" Type="String" Nullable="false" />
+    <Property Name="ProductInfo" Type="String" Nullable="false" />
+    <Property Name="UserID" Type="Int32" Nullable="true" />
+    <Property Name="Date" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <Property Name="Details" Type="String" Nullable="false" />
+    <Property Name="AmtVoted" Type="Int32" Nullable="false" />
+    <Property Name="Score" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Nullable="true" />
+  </EntityType>
+</Schema>
